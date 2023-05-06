@@ -1,4 +1,3 @@
-
 # Your original data
 data = [
   {
@@ -24,12 +23,18 @@ data = [
   }
 ]
 # The item to add to the "targets" list
-new_target = "myslave3:9104"
+new_target_name = "myslave3:9104"
+label="mysql_master"
 # Loop through each dictionary in the list
-for d in data:
-    # Add the new target to the "targets" list
-    if d["labels"]["job"] == "mysql_master":
-       d["targets"].append(new_target)
 
-# The updated data now contains the new item in the "targets" list of each dictionary
-print(data)
+
+def add_new_target(data,new_target_name,label):
+    for d in data:
+        # Add the new target to the "targets" list
+        if d["labels"]["job"] == label :           
+           d["targets"].append(new_target_name)
+    print(data)           
+    # The updated data now contains the new item in the "targets" list of each dictionary
+
+
+add_new_target(data,new_target_name,label)
